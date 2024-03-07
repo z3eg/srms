@@ -5,6 +5,7 @@
     alert("Course creation failed. Check that the course name is unique.");
 </script>
 <form method="POST" th:action="@{/course/add}">
-    <input type="text" required="required" pattern="[A-Za-z]{1,20}" placeholder="1-20 letters" name="name"/>
+    Course name:
+    <input  type="text" required="required" pattern="[A-Za-z]{1,20}" placeholder="1-20 letters" name="name"/>
     <input type="submit" value="Add a course"/>
 </form>
