@@ -31,15 +31,42 @@ public class StudentController {
     }
 
     @GetMapping("/addForm")
-    String getAddForm() {
+    public String getAddForm() {
         return "addStudent";
     }
 
     @PostMapping("/add")
-    String create(Student student) {
-        //TODO shuffle date fields to adhere to the required format
-        studentRepository.save(student);
+    public String create(Student student, Model model) {
+        boolean addedSuccessfully = true;
+        Iterable<Student> studentsBefore = studentRepository.findAll();
+        int numberOfStudentsBeforeAdding = 0;
+        for (Object s : studentsBefore)
+            numberOfStudentsBeforeAdding++;
+        String originalDateOfBirth = student.getDateOfBirth();
+        student.setDateOfBirth(shuffleDate(originalDateOfBirth));
+        try {
+            studentRepository.save(student);
+        }
+        catch(Exception ex) {
+            addedSuccessfully = false;
+            student.setDateOfBirth(originalDateOfBirth);
+            model.addAttribute("failedStudent", student);
+        }
+        Iterable<Student> studentsAfter = studentRepository.findAll();
+        int numberOfStudentsAfterAdding = 0;
+        for (Object s : studentsAfter)
+            numberOfStudentsAfterAdding++;
+        if (numberOfStudentsAfterAdding<=numberOfStudentsBeforeAdding)
+            addedSuccessfully = false;
+        model.addAttribute("addedSuccessfully", addedSuccessfully);
         return "addStudent";
+    }
+
+    private String shuffleDate(String dateOfBirth) {
+        if (dateOfBirth==null)
+            return null;
+        String[] split = dateOfBirth.split("-");
+        return split[1] + "/" + split[2] + "/" + split[0];
     }
 
     @GetMapping("/delete/{firstName}/{familyName}")
