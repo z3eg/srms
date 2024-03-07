@@ -17,7 +17,8 @@
                 <input type="date" id="start" value="1999-01-01" min="1901-01-01" max="2014-03-01" name="dateOfBirth"/>
             </td>
             <td>
-                <input type="email" required="required" placeholder="Valid email" name="emailAddress"/>
+                <input type="email" required="required" placeholder="Valid email"
+                       pattern="[a-z0-9.]{1,20}@[a-z]{3,10}.[a-z]{2,4}"  name="emailAddress"/>
             </td>
             <td>
                 <input type="submit" value="Add a student"/>
