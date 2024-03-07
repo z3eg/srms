@@ -43,8 +43,15 @@ public class ResultController {
     String create(Result result, Model model) {
         model.addAttribute("students", studentRepository.findAll());
         model.addAttribute("courses", courseRepository.findAll());
-        //TODO add check and confirmation/failure message
-        resultRepository.save(result);
+        Result resultFromDB = resultRepository.findResultByStudentNameAndCourseNameAndScore(result.getStudentName(), result.getCourseName(), result.getScore());
+        boolean addedSuccessfully;
+        if (resultFromDB==null) {
+            resultRepository.save(result);
+            addedSuccessfully = true;
+        }
+        else
+            addedSuccessfully = false;
+        model.addAttribute("addedSuccessfully", addedSuccessfully);
         return "addResult";
     }
 }

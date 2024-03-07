@@ -1,3 +1,9 @@
+<script th:if="${addedSuccessfully}==true" th:inline="javascript">
+    alert("Result added!");
+</script>
+<script th:if="${addedSuccessfully}==false" th:inline="javascript">
+    alert("Failed to add the result. Same result might have been added before.");
+</script>
 <style>
     table, td {
         /*border: 1px solid black;*/
@@ -18,7 +24,6 @@
         </tr>
         <tr>
             <td>
-<!--                TODO fix width of selects-->
                 <select name="courseName" required="required">
                     <option th:each="course : ${courses}" th:value="${course.name}" th:text="${course.name}">
                 </select>

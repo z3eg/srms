@@ -6,6 +6,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ResultRepository extends CrudRepository<Result, Long> {
 
+    Result findResultByStudentNameAndCourseNameAndScore(String studentName, String courseName, char score);
+
     @Transactional
     void deleteResultsByCourseNameAndStudentName(String firstName, String studentName);
     @Transactional
