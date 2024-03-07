@@ -43,9 +43,10 @@ public class StudentController {
     }
 
     @GetMapping("/delete/{firstName}/{familyName}")
-    public String delete(@PathVariable String firstName, @PathVariable String familyName) {
+    public String delete(@PathVariable String firstName, @PathVariable String familyName, Model model) {
         resultRepository.deleteResultsByStudentName(firstName+' '+familyName);
         studentRepository.deleteStudentByFirstNameAndFamilyName(firstName,familyName);
+        model.addAttribute("students", studentRepository.findAll());
         return "studentsList";
     }
 

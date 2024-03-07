@@ -1,3 +1,14 @@
+<style>
+    table, td {
+        /*border: 1px solid black;*/
+        padding: 5px;
+        border-collapse: collapse;
+    }
+    select {
+        width: 100%;
+    }
+</style>
+
 <form method="POST" th:action="@{/result/add}">
     <table>
         <tr>
@@ -8,13 +19,14 @@
         <tr>
             <td>
 <!--                TODO fix width of selects-->
-                <select name="courseName" required="required" style="max-width:90%;">
-                    <option th:each="course : ${courses}" th:value="${course.name}">
+                <select name="courseName" required="required">
+                    <option th:each="course : ${courses}" th:value="${course.name}" th:text="${course.name}">
                 </select>
             </td>
             <td>
                 <select name="studentName" required="required" style="max-width:90%;">
-                    <option th:each="student : ${students}" th:value="${student.firstName + ' ' + student.familyName}">
+                    <option th:each="student : ${students}" th:value="${student.firstName + ' ' + student.familyName}"
+                            th:text="${student.firstName + ' ' + student.familyName}">
                 </select>
             </td>
             <td>
