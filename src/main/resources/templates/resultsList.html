@@ -1,0 +1,12 @@
+<table>
+    <tr>
+        <td>Course</td>
+        <td>Student</td>
+        <td>Score</td>
+    </tr>
+    <tr th:each="result: ${results} ">
+        <td th:text="${result.courseName}"></td>
+        <td th:text="${result.studentName}"></td>
+        <td th:text="${result.score}"></td>
+    </tr>
+</table>

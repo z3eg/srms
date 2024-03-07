@@ -44,7 +44,7 @@ public class StudentController {
 
     @GetMapping("/delete/{firstName}/{familyName}")
     public String delete(@PathVariable String firstName, @PathVariable String familyName) {
-        resultRepository.deleteResultsByFirstNameAndFamilyName(firstName,familyName);
+        resultRepository.deleteResultsByStudentName(firstName+' '+familyName);
         studentRepository.deleteStudentByFirstNameAndFamilyName(firstName,familyName);
         return "studentsList";
     }

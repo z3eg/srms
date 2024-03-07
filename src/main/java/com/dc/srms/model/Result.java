@@ -12,8 +12,6 @@ public class Result {
     @Id
     private String courseName;
     @Id
-    private String firstName;
-    @Id
-    private String familyName;
+    private String studentName;
     private char score;
 }

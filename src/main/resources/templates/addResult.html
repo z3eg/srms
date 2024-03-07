@@ -1,0 +1,36 @@
+<form method="POST" th:action="@{/result/add}">
+    <table>
+        <tr>
+            <td>Course Name:</td>
+            <td>Student Name:</td>
+            <td>Score:</td>
+        </tr>
+        <tr>
+            <td>
+<!--                TODO fix width of selects-->
+                <select name="courseName" required="required" style="max-width:90%;">
+                    <option th:each="course : ${courses}" th:value="${course.name}">
+                </select>
+            </td>
+            <td>
+                <select name="studentName" required="required" style="max-width:90%;">
+                    <option th:each="student : ${students}" th:value="${student.firstName + ' ' + student.familyName}">
+                </select>
+            </td>
+            <td>
+                <select name="score" required="required" id="scores">
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>D</option>
+                    <option>E</option>
+                    <option>F</option>
+                </select>
+            </td>
+            <td>
+                <input type="submit" value="Add a result"/>
+            </td>
+        </tr>
+    </table>
+
+</form>
