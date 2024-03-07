@@ -40,7 +40,9 @@ public class ResultController {
     }
 
     @PostMapping("/add")
-    String create(Result result) {
+    String create(Result result, Model model) {
+        model.addAttribute("students", studentRepository.findAll());
+        model.addAttribute("courses", courseRepository.findAll());
         resultRepository.save(result);
         return "addResult";
     }
