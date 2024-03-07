@@ -12,4 +12,9 @@ public class HomeController {
     String home() {
         return "index";
     }
+
+    @GetMapping("/empty")
+    String empty() {
+        return "empty";
+    }
 }
