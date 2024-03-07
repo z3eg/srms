@@ -5,45 +5,33 @@
     <link rel="stylesheet" th:href="@{/global.css}"/>
 </head>
 <body>
-    <div th:class="container">
+    <div th:class="navbar">
         <ul>
             <li>
                 <a href ="/">Home</a>
             </li>
             <li>
-                <a href ="">Add New Students</a>
+                <a href ="/addStudent" target = "content">Add New Students</a>
             </li>
             <li>
-                <a href="/" th:hx-get="@{/student}"
-                        hx-trigger="click"
-                        hx-target=".js-rightview"
-                        hx-swap="outerHTML">Students List</a>
+                <a href="/students" target = "content">Students List</a>
             </li>
             <li>
-                <a href="/" th:hx-get="@{/course/addForm}"
-                   hx-trigger="click"
-                   hx-target=".js-rightview"
-                   hx-swap="outerHTML">Add New Courses</a>
+                <a href="/course/addForm" target = "content">Add New Courses</a>
             </li>
             <li>
-                <a href="/" th:hx-get="@{/course/list}"
-                   hx-trigger="click"
-                   hx-target=".js-rightview"
-                   hx-swap="outerHTML">Courses List</a>
+                <a href="/course/list" target = "content">Courses List</a>
             </li>
             <li>
-                <a href ="">Add New Results</a>
+                <a href ="/result/add" target = "content">Add New Results</a>
             </li>
             <li>
-                <a href ="">Results List</a>
+                <a href ="/resultList" target = "content">Results List</a>
             </li>
-
         </ul>
-
-
     </div>
-    <div th:class = "js-rightview">
-
+    <div th:class = "frame">
+        <iframe name="content" th:class="frame"></iframe>
     </div>
 </body>
 

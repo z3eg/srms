@@ -1,12 +1,21 @@
-.container {
+.frame {
     /*background-color: black;*/
+    width: 65%;
+    height: 95%;
     border: 1px black;
     display:inline-block;
 }
 
-.js-rightview {
+.navbar {
     border: 1px black;
+    width: 25%;
     display:inline-block;
+    /*position:absolute;*/
+    top:0;
+    left:0;
 }
 
-
+table, th, td {
+    border: 1px solid black;
+    /*border-collapse: collapse;*/
+}

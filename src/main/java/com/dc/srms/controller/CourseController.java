@@ -2,11 +2,12 @@ package com.dc.srms.controller;
 
 import com.dc.srms.model.Course;
 import com.dc.srms.repository.CourseRepository;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+
 
 @Controller
 @RequestMapping("/course")
@@ -24,10 +25,10 @@ public class CourseController {
         return "coursesList";
     }
 
-    @PostMapping(value="/add", headers = "HX-Request")
+    @PostMapping("/add")
     String create(Course course) {
         courseRepository.save(course);
-        return "index";
+        return "addCourse";
     }
 
     @GetMapping("/addForm")
@@ -35,12 +36,21 @@ public class CourseController {
         return "addCourse";
     }
 
-    @DeleteMapping("/{name}")
-    String delete(@PathVariable String name,
-                  HttpServletResponse response) {
+    @GetMapping("/delete/{name}")
+    String delete(@PathVariable String name, Model model) {
+        Iterable<Course> courses = courseRepository.findAll();
+        int initialSize = 0;
+        for (Object c : courses)
+            initialSize++;
         courseRepository.deleteCourseByName(name);
-        response.setHeader("HX-Trigger", "itemDeleted");
-        return "index";
+        Iterable<Course> coursesAfterDeletion = courseRepository.findAll();
+        int finalSize = 0;
+        for (Object c : coursesAfterDeletion)
+            finalSize++;
+        model.addAttribute("courses", coursesAfterDeletion);
+        boolean deleted = initialSize > finalSize;
+        model.addAttribute("deleted", deleted);
+        return "coursesList";
     }
 
 
