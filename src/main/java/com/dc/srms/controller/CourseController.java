@@ -27,7 +27,7 @@ public class CourseController {
     @PostMapping(value="/add", headers = "HX-Request")
     String create(Course course) {
         courseRepository.save(course);
-        return "index";
+        return "redirect:/";
     }
 
     @GetMapping("/addForm")
@@ -35,11 +35,11 @@ public class CourseController {
         return "addCourse";
     }
 
-    @DeleteMapping("/{name}")
+    @DeleteMapping(value="/delete/{name}")
     String delete(@PathVariable String name,
                   HttpServletResponse response) {
         courseRepository.deleteCourseByName(name);
-        response.setHeader("HX-Trigger", "itemDeleted");
+//        response.setHeader("HX-Trigger", "itemDeleted");
         return "index";
     }
 
