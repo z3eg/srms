@@ -31,6 +31,7 @@ public class CourseController {
 
     @PostMapping("/add")
     String create(Course course) {
+        //TODO add check and confirmation
         courseRepository.save(course);
         return "addCourse";
     }

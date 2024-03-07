@@ -43,6 +43,7 @@ public class ResultController {
     String create(Result result, Model model) {
         model.addAttribute("students", studentRepository.findAll());
         model.addAttribute("courses", courseRepository.findAll());
+        //TODO add check and confirmation/failure message
         resultRepository.save(result);
         return "addResult";
     }
