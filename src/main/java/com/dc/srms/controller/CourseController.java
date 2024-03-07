@@ -30,9 +30,18 @@ public class CourseController {
     }
 
     @PostMapping("/add")
-    String create(Course course) {
-        //TODO add check and confirmation
+    String create(Course course, Model model) {
+        Iterable<Course> coursesBeforeSaving = courseRepository.findAll();
+        int coursesBeforeSavingCount = 0;
+        for (Object c : coursesBeforeSaving)
+            coursesBeforeSavingCount++;
         courseRepository.save(course);
+        Iterable<Course> coursesAfterSaving = courseRepository.findAll();
+        int coursesAfterSavingCount = 0;
+        for (Object c : coursesAfterSaving)
+            coursesAfterSavingCount++;
+        boolean addedSuccessfully = coursesAfterSavingCount > coursesBeforeSavingCount;
+        model.addAttribute("addedSuccessfully", addedSuccessfully);
         return "addCourse";
     }
 
