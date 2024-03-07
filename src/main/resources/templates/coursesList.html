@@ -1,7 +1,7 @@
 <script th:if="${deleted}==true" th:inline="javascript">
     alert("Course deleted!");
 </script>
-<table th:class = "table">
+<table>
     <tr><td>Course Name</td><td>Delete</td></tr>
     <tr th:each="course: ${courses} ">
         <td th:text="${course.name}"></td>

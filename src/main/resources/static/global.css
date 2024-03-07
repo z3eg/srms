@@ -2,12 +2,12 @@
     /*background-color: black;*/
     width: 65%;
     height: 95%;
-    border: 1px black;
+    border: 1px solid black;
     display:inline-block;
 }
 
 .navbar {
-    border: 1px black;
+    border: 1px solid black;
     width: 25%;
     display:inline-block;
     /*position:absolute;*/

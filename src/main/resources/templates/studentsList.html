@@ -1,1 +1,19 @@
-Students
+<script th:if="${created}==true" th:inline="javascript">
+    alert("Student created!");
+</script>
+<table>
+    <tr>
+        <td>Name & Family name</td>
+        <td>DOB</td>
+        <td>Email</td>
+        <td>Delete</td>
+    </tr>
+    <tr th:each="student: ${students} ">
+        <td th:text="${student.firstName + ' ' + student.familyName}"></td>
+        <td th:text="${student.dateOfBirth}"></td>
+        <td th:text="${student.emailAddress}"></td>
+        <td><form th:action="@{/student/delete/{firstName}/{familyName}(firstName=${student.firstName}, familyName=${student.familyName})}">
+            <button class="destroy">X</button>
+        </form></td>
+    </tr>
+</table>

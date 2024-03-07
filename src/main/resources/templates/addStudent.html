@@ -1,0 +1,33 @@
+<form method="POST" th:action="@{/student/add}">
+    <table>
+        <tr>
+            <td>First Name:</td>
+            <td>Family Name:</td>
+            <td>Date of Birth:</td>
+            <td>Email address:</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" required="required" pattern="[A-Za-z]{1,20}" placeholder="1-20 letters" name="firstName"/>
+            </td>
+            <td>
+                <input type="text" required="required" pattern="[A-Za-z]{1,20}" placeholder="1-20 letters" name="familyName"/>
+            </td>
+            <td>
+                <input type="date" id="start" value="1999-01-01" min="1901-01-01" max="2014-03-01" name="dateOfBirth"/>
+            </td>
+            <td>
+                <input type="email" required="required" placeholder="Valid email" name="emailAddress"/>
+            </td>
+            <td>
+                <input type="submit" value="Add a student"/>
+            </td>
+        </tr>
+    </table>
+
+
+
+<!--    <input type="text" required="required" pattern="[A-Za-z]{1,20}" placeholder="1-20 letters" name="dateOfBirth"/>-->
+
+
+</form>
