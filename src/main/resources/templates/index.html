@@ -1,0 +1,49 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" hx-boost="true">
+<head>
+    <title>Home</title>
+    <script th:src="@{/webjars/htmx.org/1.9.10/dist/htmx.min.js}" defer></script>
+    <link rel="stylesheet" th:href="@{/global.css}"/>
+</head>
+<body>
+    <div th:class="container">
+        <ul>
+            <li>
+                <a href ="/">Home</a>
+            </li>
+            <li>
+                <a href ="">Add New Students</a>
+            </li>
+            <li>
+                <a href="/" th:hx-get="@{/student}"
+                        hx-trigger="click"
+                        hx-target=".js-rightview"
+                        hx-swap="outerHTML">Students List</a>
+            </li>
+            <li>
+                <a href="/" th:hx-get="@{/course/addForm}"
+                   hx-trigger="click"
+                   hx-target=".js-rightview"
+                   hx-swap="outerHTML">Add New Courses</a>
+            </li>
+            <li>
+                <a href="/" th:hx-get="@{/course/list}"
+                   hx-trigger="click"
+                   hx-target=".js-rightview"
+                   hx-swap="outerHTML">Courses List</a>
+            </li>
+            <li>
+                <a href ="">Add New Results</a>
+            </li>
+            <li>
+                <a href ="">Results List</a>
+            </li>
+
+        </ul>
+
+
+    </div>
+    <div th:class = "js-rightview">
+
+    </div>
+</body>
+

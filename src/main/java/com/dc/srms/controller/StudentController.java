@@ -3,6 +3,7 @@ package com.dc.srms.controller;
 import com.dc.srms.repository.ResultRepository;
 import com.dc.srms.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
-@RestController()
+@Controller()
 @RequestMapping("/student")
 public class StudentController {
 
@@ -23,9 +24,9 @@ public class StudentController {
         this.resultRepository = resultRepository;
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public String getAll() {
-        return "ALL";
+        return "studentslist";
     }
 
     @DeleteMapping

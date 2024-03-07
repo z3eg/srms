@@ -1,0 +1,9 @@
+<table th:class = "js-rightview">
+    <tr><td>Course Name</td><td>Delete</td></tr>
+    <tr th:each="course: ${courses} ">
+        <td th:text="${course.name}"></td>
+        <td><form th:hx-delete="@{/course/{name}(name=${course.name})}">
+            <button class="destroy">X</button>
+        </form></td>
+    </tr>
+</table>

@@ -2,10 +2,13 @@ package com.dc.srms.controller;
 
 import com.dc.srms.model.Course;
 import com.dc.srms.repository.CourseRepository;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequestMapping("/course")
 public class CourseController {
     private final CourseRepository courseRepository;
@@ -15,21 +18,29 @@ public class CourseController {
         this.courseRepository = courseRepository;
     }
 
-    @GetMapping
-    String getAll() {
-        StringBuilder sb = new StringBuilder();
-        courseRepository.findAll().forEach(c -> sb.append(c.getName()).append('\n'));
-        return sb.toString();
+    @GetMapping("/list")
+    String getAll(Model model) {
+        model.addAttribute("courses", courseRepository.findAll());
+        return "coursesList";
     }
 
-    @PostMapping
-    void create(@RequestParam String courseName) {
-        courseRepository.save(new Course(courseName));
+    @PostMapping(value="/add", headers = "HX-Request")
+    String create(Course course) {
+        courseRepository.save(course);
+        return "index";
     }
 
-    @DeleteMapping
-    void delete(@RequestParam String courseName) {
-        courseRepository.deleteCourseByName(courseName);
+    @GetMapping("/addForm")
+    String getAddForm() {
+        return "addCourse";
+    }
+
+    @DeleteMapping("/{name}")
+    String delete(@PathVariable String name,
+                  HttpServletResponse response) {
+        courseRepository.deleteCourseByName(name);
+        response.setHeader("HX-Trigger", "itemDeleted");
+        return "index";
     }
 
 

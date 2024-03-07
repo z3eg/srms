@@ -43,7 +43,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>3.2.3</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -54,6 +59,26 @@
 			<artifactId>srms</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.github.wimdeblauwe/htmx-spring-boot-thymeleaf -->
+		<dependency>
+			<groupId>io.github.wimdeblauwe</groupId>
+			<artifactId>htmx-spring-boot-thymeleaf</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.webjars.npm/htmx.org -->
+		<dependency>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>htmx.org</artifactId>
+			<version>1.9.10</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<version>3.2.3</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>

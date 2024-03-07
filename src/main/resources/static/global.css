@@ -1,0 +1,12 @@
+.container {
+    /*background-color: black;*/
+    border: 1px black;
+    display:inline-block;
+}
+
+.js-rightview {
+    border: 1px black;
+    display:inline-block;
+}
+
+
