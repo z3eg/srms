@@ -52,19 +52,10 @@ public class CourseController {
 
     @GetMapping("/delete/{name}")
     String delete(@PathVariable String name, Model model) {
-        Iterable<Course> courses = courseRepository.findAll();
-        int initialSize = 0;
-        for (Object c : courses)
-            initialSize++;
         courseRepository.deleteCourseByName(name);
         resultRepository.deleteResultsByCourseName(name);
         Iterable<Course> coursesAfterDeletion = courseRepository.findAll();
-        int finalSize = 0;
-        for (Object c : coursesAfterDeletion)
-            finalSize++;
         model.addAttribute("courses", coursesAfterDeletion);
-        boolean deleted = initialSize > finalSize;
-        model.addAttribute("deleted", deleted);
         return "coursesList";
     }
 
