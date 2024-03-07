@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.dc</groupId>
 	<artifactId>srms</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>latest</version>
 	<name>srms</name>
 	<description>Student result management system</description>
 	<properties>
@@ -53,11 +53,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.dc</groupId>
-			<artifactId>srms</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.github.wimdeblauwe/htmx-spring-boot-thymeleaf -->
 		<dependency>
